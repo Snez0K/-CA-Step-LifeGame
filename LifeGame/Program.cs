@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
+using System.Threading;
 
 namespace LifeGame
 {
@@ -10,6 +8,16 @@ namespace LifeGame
     {
         static void Main(string[] args)
         {
+            var game = new Universe();
+            game.tempgenerate();
+            game.pregame();
+            do
+            {
+                Thread.Sleep(1000);
+                game.update();
+                game.show();
+            } while (true);
+
         }
     }
 }
