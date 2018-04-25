@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace LifeGame
 {
-    class Universe
+    public class Universe
     {
-        private static int Xline = 10;
-        private static int Yline = 40;
-        private char[,] Map = new char[Xline, Yline];
-        List<char[,]> turns = new List<char[,]>();
+        public const int Xline = 10;
+        public const int Yline = 40;
+        public char[,] Map = new char[Xline, Yline];
+        public List<char[,]> turns = new List<char[,]>();
+        public char dead = ' ';
+        public char alive = 'O';
+        public char willDie = 'o';
+        public char willBorn = '*';
+        UpdateGameRules var = new UpdateGameRules();
 
         public void tempgenerate()
         {
@@ -19,7 +24,7 @@ namespace LifeGame
             {
                 for (int j = 0; j < Yline; j++)
                 {
-                    Map[i, j] = ' ';
+                    Map[i, j] = dead;
                 }
             }
         }
@@ -38,7 +43,7 @@ namespace LifeGame
                     }
                     else
                     {
-                        if (Map[i, j] == 'O')
+                        if (Map[i, j] == alive)
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
@@ -100,11 +105,11 @@ namespace LifeGame
                 }
                 else if (k.Key == ConsoleKey.Enter)
                 {
-                    if (Map[y, x - 1] == ' ')
+                    if (Map[y, x - 1] == dead)
                     {
-                        Map[y, x - 1] = 'O';
+                        Map[y, x - 1] = alive;
                     }
-                    else Map[y, x - 1] = ' ';
+                    else Map[y, x - 1] = dead;
                 }
                 Console.Clear();
             } while (k.Key != ConsoleKey.Spacebar);
@@ -112,54 +117,8 @@ namespace LifeGame
 
         public void update()
         {
-            for (int i = 0; i < Xline; i++)
-            {
-                for (int j = 0; j < Yline; j++)
-                {
-                    int liveCount = 0;
-                    try
-                    {
-                        if (Map[i,j] == 'O' || Map[i + 1, j - 1] == 'o')
-                        {
-                            liveCount--;
-                        }
-                        for (int q = i - 1; q < i + 2; q++)
-                        {
-                            for (int w = j - 1; w < j + 2; w++)
-                            {
-                                if (Map[q, w] == 'O' || Map[q, w] == 'o')
-                                {
-                                    liveCount++;
-                                }
-                            }
-                        }
-                    }catch(System.IndexOutOfRangeException){
-                    }
-                    if (liveCount < 2 && Map[i, j] == 'O' || liveCount > 3 && Map[i, j] == 'O')
-                    {
-                        Map[i, j] = 'o';
-                    }
-                    else if (liveCount == 3 && Map[i, j] == ' ')
-                    {
-                        Map[i, j] = '*';
-                    }
-                }
-            }
-            for (int i = 0; i < Xline; i++)
-            {
-                for (int j = 0; j < Yline; j++)
-                {
-                    if (Map[i, j] == 'o')
-                    {
-                        Map[i, j] = ' ';
-                    }
-                    else if (Map[i, j] == '*')
-                    {
-                        Map[i, j] = 'O';
-                    }
-                }
-            }
-            turns.Add(Map);
+            Map = var.preUpdate(Map, Xline, Yline, alive, willDie);
         }
-    }
+
+    } 
 }
