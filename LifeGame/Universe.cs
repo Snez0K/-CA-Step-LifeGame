@@ -16,7 +16,8 @@ namespace LifeGame
         public char alive = 'O';
         public char willDie = 'o';
         public char willBorn = '*';
-        UpdateGameRules var = new UpdateGameRules();
+        UpdateGameRules lol = new UpdateGameRules();
+        EndGameRules kek = new EndGameRules();
 
         public void tempgenerate()
         {
@@ -117,8 +118,11 @@ namespace LifeGame
 
         public void update()
         {
-            Map = var.preUpdate(Map, Xline, Yline, alive, willDie);
+            Map = lol.preUpdate(Map, Xline, Yline, alive, willDie);
+            if (kek.endGame(turns, Map, Xline, Yline))
+            {
+                Console
+            }
         }
-
     } 
 }
