@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LifeGame
 {
     public class Universe
     {
-        public const int Xline = 10;
-        public const int Yline = 40;
-        public char[,] Map = new char[Xline, Yline];
+        public const int Yline = 10;
+        public const int Xline = 40;
+        public char[,] Map = new char[Yline, Xline];
         public List<char[,]> turns = new List<char[,]>();
         public char dead = ' ';
         public char alive = 'O';
@@ -18,12 +19,13 @@ namespace LifeGame
         public char willBorn = '*';
         UpdateGameRules lol = new UpdateGameRules();
         EndGameRules kek = new EndGameRules();
+        int turn = 0;
 
         public void tempgenerate()
         {
-            for (int i = 0; i < Xline; i++)
+            for (int i = 0; i < Yline; i++)
             {
-                for (int j = 0; j < Yline; j++)
+                for (int j = 0; j < Xline; j++)
                 {
                     Map[i, j] = dead;
                 }
@@ -33,12 +35,12 @@ namespace LifeGame
         public void show()
         {
             Console.ForegroundColor = ConsoleColor.Gray;
-            for (int i = 0; i < Xline; i++)
+            for (int i = 0; i < Yline; i++)
             {
                 Console.Write("+");
-                for (int j = 0; j < Yline; j++)
+                for (int j = 0; j < Xline; j++)
                 {
-                    if (i == 0 || i == Xline - 1)
+                    if (i == 0 || i == Yline - 1)
                     {
                         Console.Write("+");
                     }
@@ -83,7 +85,7 @@ namespace LifeGame
                 else if (k.Key == ConsoleKey.DownArrow)
                 {
                     y++;
-                    if (y > Xline - 2)
+                    if (y > Yline - 2)
                     {
                         y--;
                     }
@@ -99,7 +101,7 @@ namespace LifeGame
                 else if (k.Key == ConsoleKey.RightArrow)
                 {
                     x++;
-                    if (x > Yline - 1)
+                    if (x > Xline - 1)
                     {
                         x--;
                     }
@@ -118,11 +120,43 @@ namespace LifeGame
 
         public void update()
         {
-            Map = lol.preUpdate(Map, Xline, Yline, alive, willDie);
-            if (kek.endGame(turns, Map, Xline, Yline))
+            //temp
+            foreach (var item in turns)
             {
-                Console
+                Console.WriteLine("item:");
+                Console.ForegroundColor = ConsoleColor.Red;
+                for (int i = 0; i < Yline; i++)
+                {
+                    Console.Write("+");
+                    for (int j = 0; j < Xline; j++)
+                    {
+                        if (i == 0 || i == Yline - 1)
+                        {
+                            Console.Write("+");
+                        }
+                        else
+                        {
+                            if (item[i, j] == 'O')
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                            }
+                            Console.Write("{0}", item[i, j]);
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                        }
+                    }
+                    Console.Write("+");
+                    Console.WriteLine();
+                }
             }
+
+            Map = lol.preUpdate(Map, Yline, Xline, alive, willDie);
+            if (kek.EndRepeatTurns(turns, Map, Yline, Xline) && turn !=0 || kek.endAllDead(Map, Yline, Xline))
+            {
+                Console.WriteLine("Конец игры");
+                Thread.Sleep(100000000);
+            }
+            turn++;
+            turns.Add(Map);
         }
     } 
 }
