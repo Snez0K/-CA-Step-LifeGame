@@ -33,7 +33,6 @@ namespace LifeGame
                             }
                         }
                     }
-                    //вызов
                     Map = replaceUpdate(Map, liveCount, i, j);
                 }
             }

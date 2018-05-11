@@ -13,11 +13,16 @@ namespace LifeGame
             game.pregame();
             do
             {
-                Thread.Sleep(1000);
-                game.update();
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write("Ход: ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(game.GetTimer());
                 game.show();
-            } while (true);
+                Thread.Sleep(1000);
+                Console.Clear();
+            } while (game.update());
 
+            Thread.Sleep(100000000);
         }
     }
 }

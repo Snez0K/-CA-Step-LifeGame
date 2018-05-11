@@ -13,13 +13,18 @@ namespace LifeGame
         public const int Xline = 40;
         public char[,] Map = new char[Yline, Xline];
         public List<char[,]> turns = new List<char[,]>();
+        public char cursor = 'X';
         public char dead = ' ';
         public char alive = 'O';
         public char willDie = 'o';
         public char willBorn = '*';
-        UpdateGameRules lol = new UpdateGameRules();
-        EndGameRules kek = new EndGameRules();
-        int turn = 0;
+        public int Timer = 1;
+        UpdateGameRules CheckUpdate = new UpdateGameRules();
+        EndGameRules CheckEnd = new EndGameRules();
+
+        public int GetTimer() {
+            return Timer;
+        }
 
         public void tempgenerate()
         {
@@ -70,10 +75,9 @@ namespace LifeGame
                 show();
                 Console.SetCursorPosition(x, y);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("X");
+                Console.Write(cursor);
                 Console.ForegroundColor = ConsoleColor.Gray;
                 k = Console.ReadKey(true);
-
                 if (k.Key == ConsoleKey.UpArrow)
                 {
                     y--;
@@ -118,45 +122,26 @@ namespace LifeGame
             } while (k.Key != ConsoleKey.Spacebar);
         }
 
-        public void update()
+        public bool update()
         {
-            //temp
-            foreach (var item in turns)
+            Map = CheckUpdate.preUpdate(Map, Yline, Xline, alive, willDie);
+            char[,] Map2 = new char[Yline, Xline];
+            for (int i = 0; i < Yline; i++)
             {
-                Console.WriteLine("item:");
-                Console.ForegroundColor = ConsoleColor.Red;
-                for (int i = 0; i < Yline; i++)
+                for (int j = 0; j < Xline; j++)
                 {
-                    Console.Write("+");
-                    for (int j = 0; j < Xline; j++)
-                    {
-                        if (i == 0 || i == Yline - 1)
-                        {
-                            Console.Write("+");
-                        }
-                        else
-                        {
-                            if (item[i, j] == 'O')
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                            }
-                            Console.Write("{0}", item[i, j]);
-                            Console.ForegroundColor = ConsoleColor.Gray;
-                        }
-                    }
-                    Console.Write("+");
-                    Console.WriteLine();
+                    Map2[i, j] = Map[i, j];
                 }
             }
 
-            Map = lol.preUpdate(Map, Yline, Xline, alive, willDie);
-            if (kek.EndRepeatTurns(turns, Map, Yline, Xline) && turn !=0 || kek.endAllDead(Map, Yline, Xline))
+            if (CheckEnd.EndRepeatTurns(turns, Map2, Yline, Xline) || CheckEnd.endAllDead(Map2, Yline, Xline))
             {
-                Console.WriteLine("Конец игры");
-                Thread.Sleep(100000000);
+                Console.WriteLine("Конец игры, понадобилось: " + GetTimer() + " Ходов");
+                return false;
             }
-            turn++;
-            turns.Add(Map);
+            Timer++;
+            turns.Add(Map2);
+            return true;
         }
     } 
 }
