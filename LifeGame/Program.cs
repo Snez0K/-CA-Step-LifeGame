@@ -6,7 +6,7 @@ namespace LifeGame
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var game = new Universe();
             game.tempgenerate();
