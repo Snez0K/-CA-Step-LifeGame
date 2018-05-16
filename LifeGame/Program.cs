@@ -17,7 +17,7 @@ namespace LifeGame
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(game.GetTimer());
                 game.show();
-                Thread.Sleep(1000);
+                Thread.Sleep(300);
             } while (game.update());
         }
     }
