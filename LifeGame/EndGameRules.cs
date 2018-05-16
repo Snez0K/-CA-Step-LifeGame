@@ -2,7 +2,7 @@
 
 namespace LifeGame
 {
-    class EndGameRules
+    public class EndGameRules
     {
         public bool endAllDead(char[,] Map, int Yline, int Xline)
         {

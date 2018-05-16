@@ -3,9 +3,9 @@ using System.Threading;
 
 namespace LifeGame
 {
-    class Program
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var game = new Universe();
             game.tempgenerate();
