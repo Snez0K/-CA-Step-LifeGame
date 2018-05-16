@@ -62,12 +62,18 @@ namespace LifeGame
 
         public void pregame()
         {
+
             Console.CursorVisible = false;
             int x = 1;
-            int y = 1;
+            int y = 2;
             ConsoleKeyInfo k;
             do
             {
+                
+                Console.Write("Generation: ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(GetTimer());
+                Console.ForegroundColor = ConsoleColor.Gray;
                 show();
                 Console.SetCursorPosition(x, y);
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -77,7 +83,7 @@ namespace LifeGame
                 if (k.Key == ConsoleKey.UpArrow)
                 {
                     y--;
-                    if (y < 1)
+                    if (y < 2)
                     {
                         y++;
                     }
@@ -85,7 +91,7 @@ namespace LifeGame
                 else if (k.Key == ConsoleKey.DownArrow)
                 {
                     y++;
-                    if (y > Yline - 2)
+                    if (y > Yline - 1)
                     {
                         y--;
                     }
@@ -108,11 +114,11 @@ namespace LifeGame
                 }
                 else if (k.Key == ConsoleKey.Enter)
                 {
-                    if (Map[y, x - 1] == dead)
+                    if (Map[y-1, x - 1] == dead)
                     {
-                        Map[y, x - 1] = alive;
+                        Map[y-1, x - 1] = alive;
                     }
-                    else Map[y, x - 1] = dead;
+                    else Map[y-1, x - 1] = dead;
                 }
                 Console.Clear();
             } while (k.Key != ConsoleKey.Spacebar);
@@ -132,9 +138,9 @@ namespace LifeGame
 
             if (CheckEnd.EndRepeatTurns(turns, Map2, Yline, Xline) || CheckEnd.endAllDead(Map2, Yline, Xline))
             {
-                Console.WriteLine("Конец игры, понадобилось: " + GetTimer() + " Ходов");
                 return false;
             }
+            Console.Clear();
             Timer++;
             turns.Add(Map2);
             return true;

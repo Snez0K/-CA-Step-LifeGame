@@ -13,15 +13,12 @@ namespace LifeGame
             do
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("Ход: ");
-                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("Generation: ");
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(game.GetTimer());
                 game.show();
                 Thread.Sleep(1000);
-                Console.Clear();
             } while (game.update());
-
-            Thread.Sleep(100000000);
         }
     }
 }
