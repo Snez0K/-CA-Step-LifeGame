@@ -7,6 +7,7 @@ namespace LifeGame
     {
         public static void Main()
         {
+            int runTime = 300;
             var game = new Universe();
             game.tempgenerate();
             game.pregame();
@@ -18,7 +19,7 @@ namespace LifeGame
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(game.GetTimer());
                 game.show();
-                Thread.Sleep(300);
+                Thread.Sleep(runTime);
             } while (game.update());
         }
     }

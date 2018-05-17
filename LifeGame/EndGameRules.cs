@@ -4,6 +4,7 @@ namespace LifeGame
 {
     public class EndGameRules
     {
+        Style st = new Style();
         bool result = true;
         public bool endAllDead(char[,] Map, int Yline, int Xline)
         {
@@ -11,11 +12,11 @@ namespace LifeGame
             {
                 for (int j = 0; j < Xline; j++)
                 {
-                    if (Map[i, j] == '*')
+                    if (Map[i, j] == st.getWillBorn())
                     {
                         result = false;
                     }
-                    else if (Map[i, j] == 'O')
+                    else if (Map[i, j] == st.getAlive())
                     {
                         result = false;
                     }
@@ -30,6 +31,7 @@ namespace LifeGame
             //int count = Turns.Count;
             int timer = 0;
             bool result = false;
+            int fail = -99999;
 
             int a = 0;
 
@@ -41,7 +43,7 @@ namespace LifeGame
                     {
                         if (Map[i, j] != item[i, j])
                         {
-                            timer = -9999;
+                            timer = fail;
                         }
                         else if (Map[i, j] == item[i, j])
                         {

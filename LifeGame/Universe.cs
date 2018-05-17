@@ -5,15 +5,11 @@ namespace LifeGame
 {
     public class Universe
     {
+        Style st = new Style();
         public const int Yline = 10;
         public const int Xline = 40;
         public char[,] Map = new char[Yline, Xline];
         public List<char[,]> turns = new List<char[,]>();
-        public char cursor = 'X';
-        public char dead = ' ';
-        public char alive = 'O';
-        public char willDie = 'o';
-        public char willBorn = '*';
         public int Timer = 1;
         UpdateGameRules CheckUpdate = new UpdateGameRules();
         EndGameRules CheckEnd = new EndGameRules();
@@ -28,7 +24,7 @@ namespace LifeGame
             {
                 for (int j = 0; j < Xline; j++)
                 {
-                    Map[i, j] = dead;
+                    Map[i, j] = st.getDead();
                 }
             }
         }
@@ -38,16 +34,16 @@ namespace LifeGame
             Console.ForegroundColor = ConsoleColor.Gray;
             for (int i = 0; i < Yline; i++)
             {
-                Console.Write("+");
+                Console.Write(st.getBorder());
                 for (int j = 0; j < Xline; j++)
                 {
                     if (i == 0 || i == Yline - 1)
                     {
-                        Console.Write("+");
+                        Console.Write(st.getBorder());
                     }
                     else
                     {
-                        if (Map[i, j] == alive)
+                        if (Map[i, j] == st.getAlive())
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
@@ -55,7 +51,7 @@ namespace LifeGame
                         Console.ForegroundColor = ConsoleColor.Gray;
                     }
                 }
-                Console.Write("+");
+                Console.Write(st.getBorder());
                 Console.WriteLine();
             }
         }
@@ -77,7 +73,7 @@ namespace LifeGame
                 show();
                 Console.SetCursorPosition(x, y);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(cursor);
+                Console.Write(st.getCursor());
                 Console.ForegroundColor = ConsoleColor.Gray;
                 k = Console.ReadKey(true);
                 if (k.Key == ConsoleKey.UpArrow)
@@ -114,11 +110,11 @@ namespace LifeGame
                 }
                 else if (k.Key == ConsoleKey.Enter)
                 {
-                    if (Map[y-1, x - 1] == dead)
+                    if (Map[y-1, x - 1] == st.getDead())
                     {
-                        Map[y-1, x - 1] = alive;
+                        Map[y-1, x - 1] = st.getAlive();
                     }
-                    else Map[y-1, x - 1] = dead;
+                    else Map[y-1, x - 1] = st.getDead();
                 }
                 Console.Clear();
             } while (k.Key != ConsoleKey.Spacebar);
@@ -127,7 +123,7 @@ namespace LifeGame
         public bool update()
         {
             bool result = true;
-            Map = CheckUpdate.preUpdate(Map, Yline, Xline, alive, willDie);
+            Map = CheckUpdate.preUpdate(Map, Yline, Xline, st.getAlive(), st.getWillDie());
             char[,] Map2 = new char[Yline, Xline];
             for (int i = 0; i < Yline; i++)
             {

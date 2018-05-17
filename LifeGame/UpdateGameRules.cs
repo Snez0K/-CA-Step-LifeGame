@@ -2,6 +2,7 @@
 {
     public class UpdateGameRules
     {
+        Style st = new Style();
         public char[,] preUpdate(char[,] Map, int Yline, int Xline, char alive, char willDie)
         {
             for (int i = 0; i < Yline; i++)
@@ -34,13 +35,13 @@
 
         public char[,] replaceUpdate(char[,] Map, int liveCount, int i, int j)
         {
-            if (liveCount < 2 && Map[i, j] == 'O' || liveCount > 3 && Map[i, j] == 'O')
+            if (liveCount < 2 && Map[i, j] == st.getAlive() || liveCount > 3 && Map[i, j] == st.getAlive())
             {
-                Map[i, j] = 'o';
+                Map[i, j] = st.getWillDie();
             }
             else if (liveCount == 3 && Map[i, j] == ' ')
             {
-                Map[i, j] = '*';
+                Map[i, j] = st.getWillBorn();
             }
             return Map;
         }
@@ -52,13 +53,13 @@
             {
                 for (int j = 0; j < Xline; j++)
                 {
-                    if (Map[i, j] == 'o')
+                    if (Map[i, j] == st.getWillDie())
                     {
-                        Map[i, j] = ' ';
+                        Map[i, j] = st.getDead();
                     }
-                    else if (Map[i, j] == '*')
+                    else if (Map[i, j] == st.getWillBorn())
                     {
-                        Map[i, j] = 'O';
+                        Map[i, j] = st.getAlive();
                     }
                 }
             }
