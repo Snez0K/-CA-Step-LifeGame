@@ -126,6 +126,7 @@ namespace LifeGame
 
         public bool update()
         {
+            bool result = true;
             Map = CheckUpdate.preUpdate(Map, Yline, Xline, alive, willDie);
             char[,] Map2 = new char[Yline, Xline];
             for (int i = 0; i < Yline; i++)
@@ -135,15 +136,13 @@ namespace LifeGame
                     Map2[i, j] = Map[i, j];
                 }
             }
-
             if (CheckEnd.EndRepeatTurns(turns, Map2, Yline, Xline) || CheckEnd.endAllDead(Map2, Yline, Xline))
             {
-                return false;
+                result = false;
             }
-            Console.Clear();
             Timer++;
             turns.Add(Map2);
-            return true;
+            return result;
         }
     } 
 }

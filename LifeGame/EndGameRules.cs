@@ -4,6 +4,7 @@ namespace LifeGame
 {
     public class EndGameRules
     {
+        bool result = true;
         public bool endAllDead(char[,] Map, int Yline, int Xline)
         {
             for (int i = 0; i < Yline; i++)
@@ -12,15 +13,15 @@ namespace LifeGame
                 {
                     if (Map[i, j] == '*')
                     {
-                        return false;
+                        result = false;
                     }
                     else if (Map[i, j] == 'O')
                     {
-                        return false;
+                        result = false;
                     }
                 }
             }
-            return true;
+            return result;
         }
 
         //Вселенная в точности (без сдвигов и поворотов) повторяет себя на одном из более ранних шагов (образуется цикличность жизни).
@@ -28,6 +29,7 @@ namespace LifeGame
         {
             //int count = Turns.Count;
             int timer = 0;
+            bool result = false;
 
             int a = 0;
 
@@ -51,12 +53,12 @@ namespace LifeGame
 
             if (timer > 0)
             {
-                return true;
+                result = true;
             }
 
             timer = 0;
             }
-            return false;
+            return result;
         }
     }
 }
