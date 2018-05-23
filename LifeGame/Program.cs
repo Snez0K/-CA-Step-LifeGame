@@ -13,7 +13,7 @@ namespace LifeGame
             game.pregame();
             do
             {
-                Console.Clear();
+               // Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("Generation: ");
                 Console.ForegroundColor = ConsoleColor.Blue;
