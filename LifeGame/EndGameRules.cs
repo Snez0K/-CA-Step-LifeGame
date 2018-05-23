@@ -31,7 +31,7 @@ namespace LifeGame
             //int count = Turns.Count;
             int timer = 0;
             bool result = false;
-            int fail = -99999;
+            const int fail = -9999; 
 
             int a = 0;
 
