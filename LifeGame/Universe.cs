@@ -5,14 +5,14 @@ namespace LifeGame
 {
     public class Universe
     {
-        Style st = new Style();
+        private Style st = new Style();
         public const int Yline = 10;
         public const int Xline = 40;
         public char[,] Map = new char[Yline, Xline];
         public List<char[,]> turns = new List<char[,]>();
         public int Timer = 1;
-        UpdateGameRules CheckUpdate = new UpdateGameRules();
-        EndGameRules CheckEnd = new EndGameRules();
+        public UpdateGameRules CheckUpdate = new UpdateGameRules();
+        public EndGameRules CheckEnd = new EndGameRules();
 
         public int GetTimer() {
             return Timer;

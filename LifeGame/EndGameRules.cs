@@ -4,8 +4,8 @@ namespace LifeGame
 {
     public class EndGameRules
     {
-        Style st = new Style();
-        bool result = true;
+        private Style st = new Style();
+        private bool result = true;
         public bool endAllDead(char[,] Map, int Yline, int Xline)
         {
             for (int i = 0; i < Yline; i++)
