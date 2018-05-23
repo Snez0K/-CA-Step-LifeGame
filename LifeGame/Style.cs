@@ -1,6 +1,6 @@
 ﻿namespace LifeGame
 {
-    class Style
+    public class Style
     {
         private char cursor = 'X';
         private char dead = ' ';
