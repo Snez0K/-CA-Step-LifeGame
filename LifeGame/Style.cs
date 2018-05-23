@@ -9,37 +9,29 @@
         private char willBorn = '*';
         private char border = '+';
 
-        //Да я знаю что можно указать { get; set;}, просто я люблю когда все прописано вот так
-
         public char getCursor()
         {
             return cursor;
         }
-
         public char getDead()
         {
             return dead;
         }
-
         public char getAlive()
         {
             return alive;
         }
-
         public char getWillDie()
         {
             return willDie;
         }
-
         public char getWillBorn()
         {
             return willBorn;
         }
-
         public char getBorder()
         {
             return border;
         }
-
     }
 }
