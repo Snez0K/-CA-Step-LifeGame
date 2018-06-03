@@ -2,36 +2,12 @@
 {
     public class Style
     {
-        private char cursor = 'X';
-        private char dead = ' ';
-        private char alive = 'O';
-        private char willDie = 'o';
-        private char willBorn = '*';
-        private char border = '+';
-
-        public char GetCursor()
-        {
-            return cursor;
-        }
-        public char GetDead()
-        {
-            return dead;
-        }
-        public char GetAlive()
-        {
-            return alive;
-        }
-        public char GetWillDie()
-        {
-            return willDie;
-        }
-        public char GetWillBorn()
-        {
-            return willBorn;
-        }
-        public char GetBorder()
-        {
-            return border;
-        }
+        private char Cursor { get; set; } = 'X' ;
+        private char Dead { get; set; } = ' ';
+        private char Alive { get; set; } = 'O';
+        private char WillDie { get; set; } = 'o';
+        private char WillBorn { get; set; } = '*';
+        private char Border { get; set; } = '+';
+        
     }
 }
