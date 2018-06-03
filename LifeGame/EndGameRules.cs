@@ -4,7 +4,7 @@ namespace LifeGame
 {
     public class EndGameRules
     {
-        private Style st = new Style();
+        private Style style = new Style();
         private bool result = true;
         public bool EndAllDead(char[,] Map, int Yline, int Xline)
         {
@@ -12,11 +12,11 @@ namespace LifeGame
             {
                 for (int j = 0; j < Xline; j++)
                 {
-                    if (Map[i, j] == st.GetWillBorn())
+                    if (Map[i, j] == style.GetWillBorn())
                     {
                         result = false;
                     }
-                    else if (Map[i, j] == st.GetAlive())
+                    else if (Map[i, j] == style.GetAlive())
                     {
                         result = false;
                     }

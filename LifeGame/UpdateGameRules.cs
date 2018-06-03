@@ -2,7 +2,7 @@
 {
     public class UpdateGameRules
     {
-        private Style st = new Style();
+        private Style style = new Style();
         public char[,] PreUpdate(char[,] Map, int Yline, int Xline, char alive, char willDie)
         {
             for (int i = 0; i < Yline; i++)
@@ -35,13 +35,13 @@
 
         public char[,] ReplaceUpdate(char[,] Map, int liveCount, int i, int j)
         {
-            if (liveCount < 2 && Map[i, j] == st.GetAlive() || liveCount > 3 && Map[i, j] == st.GetAlive())
+            if (liveCount < 2 && Map[i, j] == style.GetAlive() || liveCount > 3 && Map[i, j] == style.GetAlive())
             {
-                Map[i, j] = st.GetWillDie();
+                Map[i, j] = style.GetWillDie();
             }
             else if (liveCount == 3 && Map[i, j] == ' ')
             {
-                Map[i, j] = st.GetWillBorn();
+                Map[i, j] = style.GetWillBorn();
             }
             return Map;
         }
@@ -53,13 +53,13 @@
             {
                 for (int j = 0; j < Xline; j++)
                 {
-                    if (Map[i, j] == st.GetWillDie())
+                    if (Map[i, j] == style.GetWillDie())
                     {
-                        Map[i, j] = st.GetDead();
+                        Map[i, j] = style.GetDead();
                     }
-                    else if (Map[i, j] == st.GetWillBorn())
+                    else if (Map[i, j] == style.GetWillBorn())
                     {
-                        Map[i, j] = st.GetAlive();
+                        Map[i, j] = style.GetAlive();
                     }
                 }
             }

@@ -5,7 +5,7 @@ namespace LifeGame
 {
     public class Universe
     {
-        private Style st = new Style();
+        private Style style = new Style();
         public const int Yline = 10;
         public const int Xline = 40;
         public char[,] Map = new char[Yline, Xline];
@@ -24,7 +24,7 @@ namespace LifeGame
             {
                 for (int j = 0; j < Xline; j++)
                 {
-                    Map[i, j] = st.GetDead();
+                    Map[i, j] = style.GetDead();
                 }
             }
         }
@@ -34,16 +34,16 @@ namespace LifeGame
             Console.ForegroundColor = ConsoleColor.Gray;
             for (int i = 0; i < Yline; i++)
             {
-                Console.Write(st.GetBorder());
+                Console.Write(style.GetBorder());
                 for (int j = 0; j < Xline; j++)
                 {
                     if (i == 0 || i == Yline - 1)
                     {
-                        Console.Write(st.GetBorder());
+                        Console.Write(style.GetBorder());
                     }
                     else
                     {
-                        if (Map[i, j] == st.GetAlive())
+                        if (Map[i, j] == style.GetAlive())
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
@@ -51,7 +51,7 @@ namespace LifeGame
                         Console.ForegroundColor = ConsoleColor.Gray;
                     }
                 }
-                Console.Write(st.GetBorder());
+                Console.Write(style.GetBorder());
                 Console.WriteLine();
             }
         }
@@ -73,7 +73,7 @@ namespace LifeGame
                 Show();
                 Console.SetCursorPosition(x, y);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(st.GetCursor());
+                Console.Write(style.GetCursor());
                 Console.ForegroundColor = ConsoleColor.Gray;
                 k = Console.ReadKey(true);
                 if (k.Key == ConsoleKey.UpArrow)
@@ -110,11 +110,11 @@ namespace LifeGame
                 }
                 else if (k.Key == ConsoleKey.Enter)
                 {
-                    if (Map[y-1, x - 1] == st.GetDead())
+                    if (Map[y-1, x - 1] == style.GetDead())
                     {
-                        Map[y-1, x - 1] = st.GetAlive();
+                        Map[y-1, x - 1] = style.GetAlive();
                     }
-                    else Map[y-1, x - 1] = st.GetDead();
+                    else Map[y-1, x - 1] = style.GetDead();
                 }
                 Console.Clear();
             } while (k.Key != ConsoleKey.Spacebar);
@@ -123,7 +123,7 @@ namespace LifeGame
         public bool Update()
         {
             bool result = true;
-            Map = CheckUpdate.PreUpdate(Map, Yline, Xline, st.GetAlive(), st.GetWillDie());
+            Map = CheckUpdate.PreUpdate(Map, Yline, Xline, style.GetAlive(), style.GetWillDie());
             char[,] Map2 = new char[Yline, Xline];
             for (int i = 0; i < Yline; i++)
             {
