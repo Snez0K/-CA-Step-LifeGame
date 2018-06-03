@@ -25,12 +25,10 @@ namespace LifeGame
             return result;
         }
 
-        //Вселенная в точности (без сдвигов и поворотов) повторяет себя на одном из более ранних шагов (образуется цикличность жизни).
         public bool EndRepeatTurns(List<char[,]> Turns, char[,] Map, int Yline, int Xline)
         {
-            //int count = Turns.Count;
             int timer = 0;
-            bool result = false;
+            bool result = false; //результат проверки
             const int fail = -9999; 
 
             foreach (char[,] item in Turns)
