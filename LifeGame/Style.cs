@@ -9,27 +9,27 @@
         private char willBorn = '*';
         private char border = '+';
 
-        public char getCursor()
+        public char GetCursor()
         {
             return cursor;
         }
-        public char getDead()
+        public char GetDead()
         {
             return dead;
         }
-        public char getAlive()
+        public char GetAlive()
         {
             return alive;
         }
-        public char getWillDie()
+        public char GetWillDie()
         {
             return willDie;
         }
-        public char getWillBorn()
+        public char GetWillBorn()
         {
             return willBorn;
         }
-        public char getBorder()
+        public char GetBorder()
         {
             return border;
         }

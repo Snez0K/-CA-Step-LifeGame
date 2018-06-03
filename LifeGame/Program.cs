@@ -9,18 +9,18 @@ namespace LifeGame
         {
             int runTime = 300;
             var game = new Universe();
-            game.tempgenerate();
-            game.pregame();
+            game.Tempgenerate();
+            game.Pregame();
             do
             {
-               // Console.Clear();
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("Generation: ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(game.GetTimer());
-                game.show();
+                game.Show();
                 Thread.Sleep(runTime);
-            } while (game.update());
+            } while (game.Update());
         }
     }
 }

@@ -3,7 +3,7 @@
     public class UpdateGameRules
     {
         private Style st = new Style();
-        public char[,] preUpdate(char[,] Map, int Yline, int Xline, char alive, char willDie)
+        public char[,] PreUpdate(char[,] Map, int Yline, int Xline, char alive, char willDie)
         {
             for (int i = 0; i < Yline; i++)
             {
@@ -27,21 +27,21 @@
                             }
                         }
                     }
-                    Map = replaceUpdate(Map, liveCount, i, j);
+                    Map = ReplaceUpdate(Map, liveCount, i, j);
                 }
             }
             return FinalUpdate(Map, Yline, Xline);
         }
 
-        public char[,] replaceUpdate(char[,] Map, int liveCount, int i, int j)
+        public char[,] ReplaceUpdate(char[,] Map, int liveCount, int i, int j)
         {
-            if (liveCount < 2 && Map[i, j] == st.getAlive() || liveCount > 3 && Map[i, j] == st.getAlive())
+            if (liveCount < 2 && Map[i, j] == st.GetAlive() || liveCount > 3 && Map[i, j] == st.GetAlive())
             {
-                Map[i, j] = st.getWillDie();
+                Map[i, j] = st.GetWillDie();
             }
             else if (liveCount == 3 && Map[i, j] == ' ')
             {
-                Map[i, j] = st.getWillBorn();
+                Map[i, j] = st.GetWillBorn();
             }
             return Map;
         }
@@ -53,13 +53,13 @@
             {
                 for (int j = 0; j < Xline; j++)
                 {
-                    if (Map[i, j] == st.getWillDie())
+                    if (Map[i, j] == st.GetWillDie())
                     {
-                        Map[i, j] = st.getDead();
+                        Map[i, j] = st.GetDead();
                     }
-                    else if (Map[i, j] == st.getWillBorn())
+                    else if (Map[i, j] == st.GetWillBorn())
                     {
-                        Map[i, j] = st.getAlive();
+                        Map[i, j] = st.GetAlive();
                     }
                 }
             }

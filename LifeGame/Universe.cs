@@ -18,32 +18,32 @@ namespace LifeGame
             return Timer;
         }
 
-        public void tempgenerate()
+        public void Tempgenerate()
         {
             for (int i = 0; i < Yline; i++)
             {
                 for (int j = 0; j < Xline; j++)
                 {
-                    Map[i, j] = st.getDead();
+                    Map[i, j] = st.GetDead();
                 }
             }
         }
 
-        public void show()
+        public void Show()
         {
             Console.ForegroundColor = ConsoleColor.Gray;
             for (int i = 0; i < Yline; i++)
             {
-                Console.Write(st.getBorder());
+                Console.Write(st.GetBorder());
                 for (int j = 0; j < Xline; j++)
                 {
                     if (i == 0 || i == Yline - 1)
                     {
-                        Console.Write(st.getBorder());
+                        Console.Write(st.GetBorder());
                     }
                     else
                     {
-                        if (Map[i, j] == st.getAlive())
+                        if (Map[i, j] == st.GetAlive())
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
@@ -51,12 +51,12 @@ namespace LifeGame
                         Console.ForegroundColor = ConsoleColor.Gray;
                     }
                 }
-                Console.Write(st.getBorder());
+                Console.Write(st.GetBorder());
                 Console.WriteLine();
             }
         }
 
-        public void pregame()
+        public void Pregame()
         {
 
             Console.CursorVisible = false;
@@ -70,10 +70,10 @@ namespace LifeGame
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(GetTimer());
                 Console.ForegroundColor = ConsoleColor.Gray;
-                show();
+                Show();
                 Console.SetCursorPosition(x, y);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(st.getCursor());
+                Console.Write(st.GetCursor());
                 Console.ForegroundColor = ConsoleColor.Gray;
                 k = Console.ReadKey(true);
                 if (k.Key == ConsoleKey.UpArrow)
@@ -110,20 +110,20 @@ namespace LifeGame
                 }
                 else if (k.Key == ConsoleKey.Enter)
                 {
-                    if (Map[y-1, x - 1] == st.getDead())
+                    if (Map[y-1, x - 1] == st.GetDead())
                     {
-                        Map[y-1, x - 1] = st.getAlive();
+                        Map[y-1, x - 1] = st.GetAlive();
                     }
-                    else Map[y-1, x - 1] = st.getDead();
+                    else Map[y-1, x - 1] = st.GetDead();
                 }
                 Console.Clear();
             } while (k.Key != ConsoleKey.Spacebar);
         }
 
-        public bool update()
+        public bool Update()
         {
             bool result = true;
-            Map = CheckUpdate.preUpdate(Map, Yline, Xline, st.getAlive(), st.getWillDie());
+            Map = CheckUpdate.PreUpdate(Map, Yline, Xline, st.GetAlive(), st.GetWillDie());
             char[,] Map2 = new char[Yline, Xline];
             for (int i = 0; i < Yline; i++)
             {
@@ -132,7 +132,7 @@ namespace LifeGame
                     Map2[i, j] = Map[i, j];
                 }
             }
-            if (CheckEnd.EndRepeatTurns(turns, Map2, Yline, Xline) || CheckEnd.endAllDead(Map2, Yline, Xline))
+            if (CheckEnd.EndRepeatTurns(turns, Map2, Yline, Xline) || CheckEnd.EndAllDead(Map2, Yline, Xline))
             {
                 result = false;
             }

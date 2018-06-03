@@ -6,17 +6,17 @@ namespace LifeGame
     {
         private Style st = new Style();
         private bool result = true;
-        public bool endAllDead(char[,] Map, int Yline, int Xline)
+        public bool EndAllDead(char[,] Map, int Yline, int Xline)
         {
             for (int i = 0; i < Yline; i++)
             {
                 for (int j = 0; j < Xline; j++)
                 {
-                    if (Map[i, j] == st.getWillBorn())
+                    if (Map[i, j] == st.GetWillBorn())
                     {
                         result = false;
                     }
-                    else if (Map[i, j] == st.getAlive())
+                    else if (Map[i, j] == st.GetAlive())
                     {
                         result = false;
                     }
@@ -32,8 +32,6 @@ namespace LifeGame
             int timer = 0;
             bool result = false;
             const int fail = -9999; 
-
-            int a = 0;
 
             foreach (char[,] item in Turns)
             {
