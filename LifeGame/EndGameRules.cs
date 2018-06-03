@@ -53,7 +53,6 @@ namespace LifeGame
             {
                 result = true;
             }
-
             timer = 0;
             }
             return result;

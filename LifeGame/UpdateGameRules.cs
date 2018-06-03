@@ -48,7 +48,6 @@
 
         public char[,] FinalUpdate(char[,] Map, int Yline, int Xline)
         {
-            
             for (int i = 0; i < Yline; i++)
             {
                 for (int j = 0; j < Xline; j++)
@@ -65,6 +64,5 @@
             }
             return Map;
         }
-
     }
 }
