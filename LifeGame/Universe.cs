@@ -10,7 +10,7 @@ namespace LifeGame
         public const int Xline = 40;
         public char[,] Map = new char[Yline, Xline];
         public List<char[,]> turns = new List<char[,]>();
-        public int Timer = 1;
+        public int Timer = 0;
         public UpdateGameRules CheckUpdate = new UpdateGameRules();
         public EndGameRules CheckEnd = new EndGameRules();
 
