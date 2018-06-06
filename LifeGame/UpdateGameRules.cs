@@ -35,13 +35,13 @@
 
         public char[,] ReplaceUpdate(char[,] Map, int liveCount, int i, int j)
         {
-            if (liveCount < 2 && Map[i, j] == style.GetAlive() || liveCount > 3 && Map[i, j] == style.GetAlive())
+            if (liveCount < 2 && Map[i, j] == style.Alive || liveCount > 3 && Map[i, j] == style.Alive)
             {
-                Map[i, j] = style.GetWillDie();
+                Map[i, j] = style.WillDie;
             }
             else if (liveCount == 3 && Map[i, j] == ' ')
             {
-                Map[i, j] = style.GetWillBorn();
+                Map[i, j] = style.WillBorn;
             }
             return Map;
         }
@@ -52,13 +52,13 @@
             {
                 for (int j = 0; j < Xline; j++)
                 {
-                    if (Map[i, j] == style.GetWillDie())
+                    if (Map[i, j] == style.WillDie)
                     {
-                        Map[i, j] = style.GetDead();
+                        Map[i, j] = style.Dead;
                     }
-                    else if (Map[i, j] == style.GetWillBorn())
+                    else if (Map[i, j] == style.WillBorn)
                     {
-                        Map[i, j] = style.GetAlive();
+                        Map[i, j] = style.Alive;
                     }
                 }
             }

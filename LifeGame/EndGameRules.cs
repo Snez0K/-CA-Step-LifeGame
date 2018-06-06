@@ -12,11 +12,11 @@ namespace LifeGame
             {
                 for (int j = 0; j < Xline; j++)
                 {
-                    if (Map[i, j] == style.GetWillBorn())
+                    if (Map[i, j] == style.WillBorn)
                     {
                         result = false;
                     }
-                    else if (Map[i, j] == style.GetAlive())
+                    else if (Map[i, j] == style.Alive)
                     {
                         result = false;
                     }

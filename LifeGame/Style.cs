@@ -2,11 +2,11 @@
 {
     public class Style
     {
-        private char Cursor { get; set; } = 'X' ;
-        private char Dead { get; set; } = ' ';
-        private char Alive { get; set; } = 'O';
-        private char WillDie { get; set; } = 'o';
-        private char WillBorn { get; set; } = '*';
-        private char Border { get; set; } = '+';    
+        internal char Cursor { get; set; } = 'X' ;
+        internal char Dead { get; set; } = ' ';
+        internal char Alive { get; set; } = 'O';
+        internal char WillDie { get; set; } = 'o';
+        internal char WillBorn { get; set; } = '*';
+        internal char Border { get; set; } = '+';    
     }
 }
