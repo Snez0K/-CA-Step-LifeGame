@@ -2,7 +2,7 @@
 
 namespace LifeGame.Command
 {
-    class LeftCommand : ICommand
+    internal class LeftCommand : ICommand
     {
         Cursor cursor;
 

@@ -2,7 +2,7 @@
 
 namespace LifeGame.Command
 {
-    class EnterCommand : ICommand
+    internal class EnterCommand : ICommand
     {
         Style style = new Style();
         Map map;

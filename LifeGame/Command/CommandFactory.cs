@@ -2,7 +2,7 @@
 
 namespace LifeGame.Command
 {
-    class CommandFactory
+    internal class CommandFactory
     {
         private List<ICommand> list = new List<ICommand>();
         Map map;
