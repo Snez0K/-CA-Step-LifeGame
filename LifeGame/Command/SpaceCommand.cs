@@ -17,7 +17,10 @@ namespace LifeGame.Command
             {
                 return true;
             }
-            else return false;
+            else
+            {
+                return false;
+            }
         }
 
         public void Execute()

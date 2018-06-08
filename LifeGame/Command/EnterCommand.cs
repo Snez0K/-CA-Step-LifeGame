@@ -20,7 +20,10 @@ namespace LifeGame.Command
             {
                 return true;
             }
-            else return false;
+            else
+            {
+                return false;
+            }
         }
 
         public void Execute()
@@ -29,7 +32,10 @@ namespace LifeGame.Command
             {
                 map.Field[cursor.Y - 1, cursor.X - 1] = style.Alive;
             }
-            else map.Field[cursor.Y - 1, cursor.X - 1] = style.Dead;
+            else
+            {
+                map.Field[cursor.Y - 1, cursor.X - 1] = style.Dead;
+            }
         }
     }
 }
