@@ -6,17 +6,17 @@ namespace LifeGame
     {
         private Style style = new Style();
         private bool result = true;
-        public bool EndAllDead(char[,] Map, int Yline, int Xline)
+        public bool EndAllDead(char[,] map, int yLine, int xLine)
         {
-            for (int i = 0; i < Yline; i++)
+            for (int i = 0; i < yLine; i++)
             {
-                for (int j = 0; j < Xline; j++)
+                for (int j = 0; j < xLine; j++)
                 {
-                    if (Map[i, j] == style.WillBorn)
+                    if (map[i, j] == style.WillBorn)
                     {
                         result = false;
                     }
-                    else if (Map[i, j] == style.Alive)
+                    else if (map[i, j] == style.Alive)
                     {
                         result = false;
                     }
@@ -25,23 +25,23 @@ namespace LifeGame
             return result;
         }
 
-        public bool EndRepeatTurns(List<char[,]> Turns, char[,] Map, int Yline, int Xline)
+        public bool EndRepeatTurns(List<char[,]> turns, char[,] map, int yLine, int xLine)
         {
             int timer = 0;
             bool result = false; //результат проверки
             const int fail = -9999; 
 
-            foreach (char[,] item in Turns)
+            foreach (char[,] item in turns)
             {
-                for (int i = 0; i < Yline; i++)
+                for (int i = 0; i < yLine; i++)
                 {
-                    for (int j = 0; j < Xline; j++)
+                    for (int j = 0; j < xLine; j++)
                     {
-                        if (Map[i, j] != item[i, j])
+                        if (map[i, j] != item[i, j])
                         {
                             timer = fail;
                         }
-                        else if (Map[i, j] == item[i, j])
+                        else if (map[i, j] == item[i, j])
                         {
                             timer++;
                         }

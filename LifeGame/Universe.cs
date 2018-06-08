@@ -10,12 +10,12 @@ namespace LifeGame
         private Cursor cursor = new Cursor();
         private Style style = new Style();
         private List<char[,]> turns = new List<char[,]>();
-        private int Timer = 0;
-        private UpdateGameRules CheckUpdate = new UpdateGameRules();
-        private EndGameRules CheckEnd = new EndGameRules();
+        private int timer = 0;
+        private UpdateGameRules сheckUpdate = new UpdateGameRules();
+        private EndGameRules сheckEnd = new EndGameRules();
 
         public int GetTimer() {
-            return Timer;
+            return timer;
         }
 
         public void Tempgenerate()
@@ -88,7 +88,7 @@ namespace LifeGame
         public bool Update()
         {
             bool result = true;
-            map.Field = CheckUpdate.PreUpdate(map.Field, Map.Yline, Map.Xline, style.Alive, style.WillDie);
+            map.Field = сheckUpdate.PreUpdate(map.Field, Map.Yline, Map.Xline, style.Alive, style.WillDie);
             char[,] Map2 = new char[Map.Yline, Map.Xline];
             for (int i = 0; i < Map.Yline; i++)
             {
@@ -97,11 +97,11 @@ namespace LifeGame
                     Map2[i, j] = map.Field[i, j];
                 }
             }
-            if (CheckEnd.EndRepeatTurns(turns, Map2, Map.Yline, Map.Xline) || CheckEnd.EndAllDead(Map2, Map.Yline, Map.Xline))
+            if (сheckEnd.EndRepeatTurns(turns, Map2, Map.Yline, Map.Xline) || сheckEnd.EndAllDead(Map2, Map.Yline, Map.Xline))
             {
                 result = false;
             }
-            Timer++;
+            timer++;
             turns.Add(Map2);
             return result;
         }
