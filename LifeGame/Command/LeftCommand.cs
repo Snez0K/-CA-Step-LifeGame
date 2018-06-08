@@ -13,14 +13,7 @@ namespace LifeGame.Command
 
         public bool CanExecute(ConsoleKeyInfo key)
         {
-            if (key.Key == ConsoleKey.LeftArrow)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return key.Key == ConsoleKey.LeftArrow;
         }
 
         public void Execute()

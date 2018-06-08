@@ -13,14 +13,7 @@ namespace LifeGame.Command
 
         public bool CanExecute(ConsoleKeyInfo key)
         {
-            if (key.Key == ConsoleKey.Spacebar)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return key.Key == ConsoleKey.Spacebar;
         }
 
         public void Execute()

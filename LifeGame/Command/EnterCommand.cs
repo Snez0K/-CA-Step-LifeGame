@@ -16,14 +16,7 @@ namespace LifeGame.Command
 
         public bool CanExecute(ConsoleKeyInfo key)
         {
-            if (key.Key == ConsoleKey.Enter)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return key.Key == ConsoleKey.Enter;
         }
 
         public void Execute()

@@ -22,14 +22,7 @@ namespace LifeGame.Command
 
         bool ICommand.CanExecute(ConsoleKeyInfo key)
         {
-            if (key.Key == ConsoleKey.DownArrow)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return key.Key == ConsoleKey.DownArrow;
         }
     }
 }
