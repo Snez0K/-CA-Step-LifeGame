@@ -18,7 +18,6 @@ namespace LifeGame.Command
             {
                 cursor.Y--;
             }
-
         }
 
         bool ICommand.CanExecute(ConsoleKeyInfo key)
