@@ -4,10 +4,10 @@ namespace LifeGame.Command
 {
     internal class EnterCommand : ICommand
     {
-        Style style = new Style();
-        Map map;
+        private Style style = new Style();
+        private Map map;
 
-        Cursor cursor;
+        private Cursor cursor;
 
         public EnterCommand(Cursor cursor, Map map)
         {

@@ -4,7 +4,7 @@ namespace LifeGame.Command
 {
     internal class LeftCommand : ICommand
     {
-        Cursor cursor;
+        private Cursor cursor;
 
         public LeftCommand(Cursor cursor)
         {

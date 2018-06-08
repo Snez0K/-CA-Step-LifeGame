@@ -5,8 +5,8 @@ namespace LifeGame.Command
     internal class CommandFactory
     {
         private List<ICommand> list = new List<ICommand>();
-        Map map;
-        Cursor cursor;
+        private Map map;
+        private Cursor cursor;
 
         public CommandFactory(Cursor cursor, Map map)
         {

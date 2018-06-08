@@ -4,7 +4,7 @@ namespace LifeGame.Command
 {
     internal class SpaceCommand : ICommand
     {
-        Map map = new Map();
+        private Map map = new Map();
 
         public SpaceCommand(Map map)
         {

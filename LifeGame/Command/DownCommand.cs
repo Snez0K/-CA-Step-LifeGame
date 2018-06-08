@@ -4,7 +4,7 @@ namespace LifeGame.Command
 {
     internal class DownCommand : ICommand
     {
-        Cursor cursor;
+        private Cursor cursor;
 
         public DownCommand(Cursor cursor)
         {
