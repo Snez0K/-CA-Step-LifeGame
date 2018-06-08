@@ -14,7 +14,7 @@ namespace LifeGame.Command
             this.map = map;
         }
 
-        public List<ICommand> Factory()
+        public IEnumerable<ICommand> Factory()
         {
             SpaceCommand space = new SpaceCommand(map);
             EnterCommand enter = new EnterCommand(cursor, map);

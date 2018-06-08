@@ -61,7 +61,7 @@ namespace LifeGame
             Console.CursorVisible = false;
             ConsoleKeyInfo k;
             CommandFactory factory = new CommandFactory(cursor, map);
-            List<ICommand> list = factory.Factory() ;        
+            IEnumerable<ICommand> list = factory.Factory() ;        
             do
             {  
                 Console.Write("Generation: ");
