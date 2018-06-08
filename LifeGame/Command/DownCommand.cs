@@ -14,7 +14,7 @@ namespace LifeGame.Command
         public void Execute()
         {
             cursor.Y++;
-            if (cursor.Y > Map.Yline -1)
+            if (cursor.Y > Map.Yline - 1)
             {
                 cursor.Y--;
             }
