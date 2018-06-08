@@ -89,20 +89,20 @@ namespace LifeGame
         {
             bool result = true;
             map.Field = сheckUpdate.PreUpdate(map.Field, Map.Yline, Map.Xline, style.Alive, style.WillDie);
-            char[,] Map2 = new char[Map.Yline, Map.Xline];
+            char[,] map2 = new char[Map.Yline, Map.Xline];
             for (int i = 0; i < Map.Yline; i++)
             {
                 for (int j = 0; j < Map.Xline; j++)
                 {
-                    Map2[i, j] = map.Field[i, j];
+                    map2[i, j] = map.Field[i, j];
                 }
             }
-            if (сheckEnd.EndRepeatTurns(turns, Map2, Map.Yline, Map.Xline) || сheckEnd.EndAllDead(Map2, Map.Yline, Map.Xline))
+            if (сheckEnd.EndRepeatTurns(turns, map2, Map.Yline, Map.Xline) || сheckEnd.EndAllDead(map2, Map.Yline, Map.Xline))
             {
                 result = false;
             }
             timer++;
-            turns.Add(Map2);
+            turns.Add(map2);
             return result;
         }
     } 
