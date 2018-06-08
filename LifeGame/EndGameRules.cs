@@ -29,7 +29,7 @@ namespace LifeGame
         public bool EndRepeatTurns(List<char[,]> turns, char[,] map, int yLine, int xLine)
         {
             int timer = 0;
-            bool result = false; //результат проверки
+            bool willWork = false; //результат проверки
             const int fail = -9999; 
 
             foreach (char[,] item in turns)
@@ -52,11 +52,11 @@ namespace LifeGame
 
             if (timer > 0)
             {
-                result = true;
+                willWork = true;
             }
             timer = 0;
             }
-            return result;
+            return willWork;
         }
     }
 }
