@@ -6,6 +6,7 @@ namespace LifeGame
     {
         private Style style = new Style();
         private bool result = true;
+
         public bool EndAllDead(char[,] map, int yLine, int xLine)
         {
             for (int i = 0; i < yLine; i++)

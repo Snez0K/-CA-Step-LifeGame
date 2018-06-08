@@ -6,7 +6,6 @@ namespace LifeGame.Command
     {
         private Style style = new Style();
         private Map map;
-
         private Cursor cursor;
 
         public EnterCommand(Cursor cursor, Map map)

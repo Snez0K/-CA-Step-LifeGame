@@ -3,6 +3,7 @@
     public class UpdateGameRules
     {
         private Style style = new Style();
+
         public char[,] PreUpdate(char[,] map, int yLine, int xLine, char alive, char willDie)
         {
             for (int i = 1; i < yLine-1; i++)
