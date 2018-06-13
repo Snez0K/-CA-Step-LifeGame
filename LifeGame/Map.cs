@@ -1,6 +1,6 @@
 ﻿namespace LifeGame
 {
-    class Map
+    public class Map
     {
         internal const int Yline = 10;
         internal const int Xline = 40;
