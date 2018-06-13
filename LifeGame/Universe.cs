@@ -55,7 +55,7 @@ namespace LifeGame
         public void Pregame()
         {
             Console.CursorVisible = false;
-            ConsoleKeyInfo k;
+            ConsoleKeyInfo key;
             CommandFactory factory = new CommandFactory(cursor, map);
             IEnumerable<ICommand> list = factory.Factory() ;        
             do
@@ -69,10 +69,10 @@ namespace LifeGame
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(style.Cursor);
                 Console.ForegroundColor = ConsoleColor.Gray;
-                k = Console.ReadKey(true);
+                key = Console.ReadKey(true);
                 foreach (ICommand i in list)
                 {
-                   if (i.CanExecute(k))
+                   if (i.CanExecute(key))
                     {
                         i.Execute();
                     }
