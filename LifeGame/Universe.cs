@@ -78,7 +78,7 @@ namespace LifeGame
                     }
                 }
                 Console.Clear();
-            } while (map.Start == false);
+            } while (map.Start);
         }
 
         public bool Update()
