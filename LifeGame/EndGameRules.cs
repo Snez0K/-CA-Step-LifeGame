@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace LifeGame
 {
@@ -28,6 +29,7 @@ namespace LifeGame
 
         public bool EndRepeatTurns(List<char[,]> turns, char[,] map, int yLine, int xLine)
         {
+            Console.Title = turns.Count.ToString();
             bool willWork = false; //результат проверки
             bool @continue = true;
 
@@ -48,8 +50,12 @@ namespace LifeGame
                         }
                     }
                 }
+                if (!@continue)
+                {
+                    break;
+                }
             }
-            return willWork;
+            return !willWork;
         }
     }
 }

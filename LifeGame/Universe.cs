@@ -13,6 +13,7 @@ namespace LifeGame
         internal int Timer { get; set; } = 0;
         private UpdateGameRules сheckUpdate = new UpdateGameRules();
         private EndGameRules сheckEnd = new EndGameRules();
+        public bool end = false;
 
         public void EmptyMapGenerate()
         {
@@ -78,12 +79,11 @@ namespace LifeGame
                     }
                 }
                 Console.Clear();
-            } while (map.Start);
+            } while (!map.Start);
         }
 
-        public bool Update()
+        public void Update()
         {
-            bool @continue = true;
             map.Field = сheckUpdate.PreUpdate(map.Field, Map.Yline, Map.Xline, style.Alive, style.WillDie);
             char[,] cloneMap = new char[Map.Yline, Map.Xline];
             for (int i = 0; i < Map.Yline; i++)
@@ -95,11 +95,10 @@ namespace LifeGame
             }
             if (сheckEnd.EndRepeatTurns(turns, cloneMap, Map.Yline, Map.Xline) || сheckEnd.EndAllDead(cloneMap, Map.Yline, Map.Xline))
             {
-                @continue = false;
+                end = true;
             }
             Timer++;
             turns.Add(cloneMap);
-            return @continue;
         }
     } 
 }
