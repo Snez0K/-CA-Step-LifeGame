@@ -9,7 +9,7 @@ namespace LifeGame
         {
             int runTime = 300;
             var game = new Universe();
-            game.Tempgenerate();
+            game.EmptyMapGenerate();
             game.Pregame();
             do
             {

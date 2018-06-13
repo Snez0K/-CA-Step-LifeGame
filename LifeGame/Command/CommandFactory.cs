@@ -4,7 +4,7 @@ namespace LifeGame.Command
 {
     internal class CommandFactory
     {
-        private List<ICommand> list = new List<ICommand>();
+        private List<ICommand> commandToCheck = new List<ICommand>();
         private Map map;
         private Cursor cursor;
 
@@ -14,7 +14,7 @@ namespace LifeGame.Command
             this.map = map;
         }
 
-        public IEnumerable<ICommand> Factory()
+        public IEnumerable<ICommand> CommandFiller()
         {
             SpaceCommand space = new SpaceCommand(map);
             EnterCommand enter = new EnterCommand(cursor, map);
@@ -22,13 +22,13 @@ namespace LifeGame.Command
             UpCommand up = new UpCommand(cursor);
             RightCommand right = new RightCommand(cursor);
             DownCommand down = new DownCommand(cursor);
-            list.Add(space);
-            list.Add(enter);
-            list.Add(left);
-            list.Add(up);
-            list.Add(right);
-            list.Add(down);
-            return list;
+            commandToCheck.Add(space);
+            commandToCheck.Add(enter);
+            commandToCheck.Add(left);
+            commandToCheck.Add(up);
+            commandToCheck.Add(right);
+            commandToCheck.Add(down);
+            return commandToCheck;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace LifeGame
         private UpdateGameRules сheckUpdate = new UpdateGameRules();
         private EndGameRules сheckEnd = new EndGameRules();
 
-        public void Tempgenerate()
+        public void EmptyMapGenerate()
         {
             for (int i = 0; i < Map.Yline; i++)
             {
@@ -57,7 +57,7 @@ namespace LifeGame
             Console.CursorVisible = false;
             ConsoleKeyInfo key;
             CommandFactory factory = new CommandFactory(cursor, map);
-            IEnumerable<ICommand> list = factory.Factory() ;        
+            IEnumerable<ICommand> commandList = factory.CommandFiller() ;        
             do
             {  
                 Console.Write("Generation: ");
@@ -70,11 +70,11 @@ namespace LifeGame
                 Console.Write(style.Cursor);
                 Console.ForegroundColor = ConsoleColor.Gray;
                 key = Console.ReadKey(true);
-                foreach (ICommand i in list)
+                foreach (ICommand command in commandList)
                 {
-                   if (i.CanExecute(key))
+                   if (command.CanExecute(key))
                     {
-                        i.Execute();
+                        command.Execute();
                     }
                 }
                 Console.Clear();
@@ -83,23 +83,23 @@ namespace LifeGame
 
         public bool Update()
         {
-            bool result = true;
+            bool @continue = true;
             map.Field = сheckUpdate.PreUpdate(map.Field, Map.Yline, Map.Xline, style.Alive, style.WillDie);
-            char[,] map2 = new char[Map.Yline, Map.Xline];
+            char[,] cloneMap = new char[Map.Yline, Map.Xline];
             for (int i = 0; i < Map.Yline; i++)
             {
                 for (int j = 0; j < Map.Xline; j++)
                 {
-                    map2[i, j] = map.Field[i, j];
+                    cloneMap[i, j] = map.Field[i, j];
                 }
             }
-            if (сheckEnd.EndRepeatTurns(turns, map2, Map.Yline, Map.Xline) || сheckEnd.EndAllDead(map2, Map.Yline, Map.Xline))
+            if (сheckEnd.EndRepeatTurns(turns, cloneMap, Map.Yline, Map.Xline) || сheckEnd.EndAllDead(cloneMap, Map.Yline, Map.Xline))
             {
-                result = false;
+                @continue = false;
             }
             Timer++;
-            turns.Add(map2);
-            return result;
+            turns.Add(cloneMap);
+            return @continue;
         }
     } 
 }

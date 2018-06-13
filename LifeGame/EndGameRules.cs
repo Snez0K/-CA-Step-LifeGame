@@ -5,7 +5,7 @@ namespace LifeGame
     public class EndGameRules
     {
         private Style style = new Style();
-        private bool result = true;
+        private bool willWork = true;
 
         public bool EndAllDead(char[,] map, int yLine, int xLine)
         {
@@ -15,15 +15,15 @@ namespace LifeGame
                 {
                     if (map[i, j] == style.WillBorn)
                     {
-                        result = false;
+                        willWork = false;
                     }
                     else if (map[i, j] == style.Alive)
                     {
-                        result = false;
+                        willWork = false;
                     }
                 }
             }
-            return result;
+            return willWork;
         }
 
         public bool EndRepeatTurns(List<char[,]> turns, char[,] map, int yLine, int xLine)
