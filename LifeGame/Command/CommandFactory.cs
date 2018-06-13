@@ -4,7 +4,7 @@ namespace LifeGame.Command
 {
     internal class CommandFactory
     {
-        private List<ICommand> commandToCheck = new List<ICommand>();
+        private ICollection<ICommand> commandToCheck = new List<ICommand>();
         private Map map;
         private Cursor cursor;
 
