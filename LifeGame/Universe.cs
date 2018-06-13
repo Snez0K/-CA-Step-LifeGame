@@ -72,7 +72,7 @@ namespace LifeGame
                 key = Console.ReadKey(true);
                 foreach (ICommand command in commandList)
                 {
-                   if (command.CanExecute(key))
+                    if (command.CanExecute(key))
                     {
                         command.Execute();
                     }
