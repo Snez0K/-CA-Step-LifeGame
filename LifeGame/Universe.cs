@@ -10,13 +10,9 @@ namespace LifeGame
         private Cursor cursor = new Cursor();
         private Style style = new Style();
         private List<char[,]> turns = new List<char[,]>();
-        private int timer = 0;
+        internal int Timer { get; set; } = 0;
         private UpdateGameRules сheckUpdate = new UpdateGameRules();
         private EndGameRules сheckEnd = new EndGameRules();
-
-        public int GetTimer() {
-            return timer;
-        }
 
         public void Tempgenerate()
         {
@@ -66,7 +62,7 @@ namespace LifeGame
             {  
                 Console.Write("Generation: ");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine(GetTimer());
+                Console.WriteLine(Timer);
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Show();
                 Console.SetCursorPosition(cursor.X, cursor.Y);
@@ -101,7 +97,7 @@ namespace LifeGame
             {
                 result = false;
             }
-            timer++;
+            Timer++;
             turns.Add(map2);
             return result;
         }
