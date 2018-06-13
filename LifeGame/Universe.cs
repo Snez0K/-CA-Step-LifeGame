@@ -1,6 +1,6 @@
-﻿using System;
+﻿using LifeGame.Command;
+using System;
 using System.Collections.Generic;
-using LifeGame.Command;
 
 namespace LifeGame
 {
@@ -80,7 +80,7 @@ namespace LifeGame
                     {
                         i.Execute();
                     }
-                } 
+                }
                 Console.Clear();
             } while (map.Start == false);
         }

@@ -48,7 +48,6 @@ namespace LifeGame
                         }
                     }
                 }
-            
             }
             return willWork;
         }
