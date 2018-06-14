@@ -1,6 +1,6 @@
 ﻿namespace LifeGame
 {
-   public class Cursor
+    public class Cursor
     {
         internal int X { get; set; } = 1;
 
